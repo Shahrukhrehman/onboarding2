@@ -3,6 +3,7 @@ package Exercises;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class Exercise9b {
@@ -16,6 +17,11 @@ public class Exercise9b {
 		driver.findElement(By.id("password")).sendKeys("SecretPassword!");
 		
 		driver.findElement(By.className("radius")).click();	
+		
+		String expectedMessage = "You logged into a secure area!";
+		String message = driver.findElement(By.id("flash")).getText();
+		
+		Assert.assertFalse(message.contains(expectedMessage), expectedMessage);
 		
 		driver.quit();
 	}

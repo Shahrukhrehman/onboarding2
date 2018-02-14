@@ -1,7 +1,7 @@
 package Exercises;
 
 import org.testng.annotations.Test;
-import org.testng.AssertJUnit;
+import org.testng.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -21,8 +21,9 @@ public class Exercise9a {
 		
 		String expectedMessage = "You logged into a secure area!";
 		String message = driver.findElement(By.id("flash")).getText();
-		AssertJUnit.assertEquals(expectedMessage, message);
 		
-		//driver.quit();
+		Assert.assertTrue(message.contains(expectedMessage), expectedMessage);
+		
+		driver.quit();
 	}
 }
